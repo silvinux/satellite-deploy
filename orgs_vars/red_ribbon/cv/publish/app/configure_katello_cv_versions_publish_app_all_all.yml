@@ -1,0 +1,13 @@
+configure_katello_content_view_versions:
+##Publish and promote all envs
+  - content_view: cv-app-jboss-jws
+    organization: "{{ orgs }}"
+    lifecycle_environments: "{{ configure_katello_lifecycle_environment | map(attribute='name') | list }}"
+    state: present
+#  - content_view: cv-app-jboss-7
+#    organization: "{{ orgs }}"
+#    lifecycle_environments: "{{ configure_katello_lifecycle_environment | map(attribute='name') | list }}"
+#      - Library
+#  - content_view: cv-app-apache-php
+#    organization: "{{ orgs }}"
+#    lifecycle_environments: "{{ configure_katello_lifecycle_environment | map(attribute='name') | list }}"

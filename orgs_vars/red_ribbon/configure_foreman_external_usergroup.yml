@@ -1,0 +1,14 @@
+configure_foreman_external_usergroup:
+  - name: sat-admins
+    auth_source_ldap: idm_consulting
+    usergroup: sat-admins
+    state: present
+    roles: 
+      - Manager
+
+  - name: sat-ops
+    auth_source_ldap: idm_consulting
+    usergroup: sat-ops
+    state: present
+    roles: 
+      - Auditor

@@ -1,0 +1,15 @@
+---
+# tasks file for monitoring-satellite
+- name: Include Tasks to Install packages, start and enable services
+  include_tasks: pcp_packages.yml
+  args:
+    apply:
+      tags: pcp_packages
+  tags: pcp_packages
+
+- name: Include Tasks to configure pcp data collection
+  include_tasks: pcp_data_collection.yml
+  args:
+    apply:
+      tags: pcp_data_collection
+  tags: pcp_data_collection

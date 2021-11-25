@@ -1,0 +1,4 @@
+---
+# handlers file for config-satellite
+- name: sync all repositories
+  include_tasks: "{{ role_path }}/handlers/sync_repositories.yml"

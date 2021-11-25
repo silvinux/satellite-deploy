@@ -1,0 +1,2 @@
+configure_katello_organizations:
+  - { name: biffco, state: present, manifest: "/root/sat-files/manifest_biffco_20200216T164434Z.zip" }

@@ -1,0 +1,6 @@
+configure_katello_host_collections:
+  - name: test
+    description: "Test collection"
+    hosts: 
+      - satellite.bcnconsulting.com 
+      - test.bcnconsulting.com 

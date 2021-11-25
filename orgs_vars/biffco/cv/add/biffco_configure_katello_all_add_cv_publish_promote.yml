@@ -1,0 +1,6 @@
+configure_katello_content_view_versions:
+##Publish and promote all envs
+  - content_view: cv-rhel7
+    organization: biffco
+    lifecycle_environments: "{{ configure_katello_lifecycle_environment | map(attribute='name') | list }}"
+    state: present

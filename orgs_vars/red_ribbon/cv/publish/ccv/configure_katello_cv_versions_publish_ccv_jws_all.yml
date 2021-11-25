@@ -1,0 +1,6 @@
+configure_katello_content_view_versions:
+##Publish and promote from one env to another
+  - content_view: ccv-app-jboss-jws-rh7
+    organization: "{{ orgs }}"
+    lifecycle_environments: "{{ configure_katello_lifecycle_environment | map(attribute='name') | list }}"
+    state: present

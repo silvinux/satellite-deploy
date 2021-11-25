@@ -1,0 +1,35 @@
+---
+- name: Monitoring Satellite | pcp_packages | Gather the rpm package facts
+  package_facts:
+    manager: auto
+
+#- name: Monitoring Satellite | pcp_packages | Enable the Red Hat Enterprise Linux optional repository
+#  rhsm_repository:
+#    name: rhel-7-server-optional-rpms
+#    state: enabled
+
+- name: Monitoring Satellite | pcp_packages | Install the PCP packages
+  command: "/usr/bin/satellite-maintain packages install --assumeyes pcp pcp-pmda-apache pcp-pmda-postgresql pcp-system-tools pcp-webjs foreman-telemetry pcp-mmvstatsd pcp-webapi pcp-webapp-grafana pcp-webapp-vector"
+  register: install_pcp_packages
+  when: 
+     ('pcp' not in ansible_facts.packages) or
+     ('pcp-pmda-apache' not in ansible_facts.packages) or
+     ('pcp-pmda-postgresql' not in ansible_facts.packages) or
+     ('pcp-system-tools' not in ansible_facts.packages) or
+     ('pcp-webjs' not in ansible_facts.packages) or
+     ('foreman-telemetry' not in ansible_facts.packages) or
+     ('pcp-mmvstatsd' not in ansible_facts.packages) or
+     ('pcp-webapi' not in ansible_facts.packages) or
+     ('pcp-webapp-grafana' not in ansible_facts.packages) or
+     ('pcp-webapp-vector' not in ansible_facts.packages)
+
+- name: Monitoring Satellite | pcp_packages | Start and Enable services pmcd pmlogger
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - pmcd 
+    - pmlogger
+  when: (install_pcp_packages.rc in [0]) or
+     ('pcp' not in ansible_facts.packages)

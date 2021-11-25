@@ -1,0 +1,20 @@
+configure_foreman_settings:
+###---General---
+# 	The default administrator email address
+  - { name: administrator, value: root@bcnconsulting.com }
+# Satellite URL
+#  - { name: forema_url, value: https://satellite.bcnconsulting.com }
+# HTTP(S) proxy
+#  - { name: http_proxy, value: http://proxy.example.com }
+# HTTP(S) proxy except hosts. 
+#  - { name: default_download_policy, value: on_demand }
+
+###---Content---
+# Default Repository download policy - immediate\on_demand
+  - { name: default_download_policy, value: immediate }
+#Default Capsule download policy
+  - { name: default_proxy_download_policy, value: on_demand }
+#Use remote execution by default
+  - { name: remote_execution_by_default, value: no }
+#Sync Capsules after Content View promotion
+  - { name: foreman_proxy_content_auto_sync, value: yes }

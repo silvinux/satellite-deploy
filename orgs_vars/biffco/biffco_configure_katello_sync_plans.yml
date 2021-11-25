@@ -1,0 +1,14 @@
+configure_katello_sync_plans:
+  - name: Red Hat Sync Plan
+    organization: biffco
+    interval: daily
+    enabled: true
+    sync_date: "2020-02-16 00:00:00"
+    products:
+      #- 'Red Hat Enterprise Linux Server'
+      #- 'Red Hat Enterprise Linux for x86_64'
+      #- 'Red Hat Ansible Engine'
+      #- 'Red Hat Satellite Capsule'
+      #- 'Red Hat Software Collections for RHEL Server'
+      #- 'Red Hat OpenShift Container Platform'
+      - 'EPEL'

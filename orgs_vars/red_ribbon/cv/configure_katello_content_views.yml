@@ -1,0 +1,289 @@
+configure_katello_content_views:
+ - name: cv-os-rhel-8Server
+   organization: "{{ orgs }}"
+   repositories:
+## 8Severs
+     - name: Red Hat Enterprise Linux 8 for x86_64 - AppStream RPMs 8
+       product: Red Hat Enterprise Linux for x86_64
+     - name: Red Hat Enterprise Linux 8 for x86_64 - BaseOS RPMs 8
+       product: Red Hat Enterprise Linux for x86_64
+     - name: Red Hat Enterprise Linux 8 for x86_64 - Supplementary RPMs 8
+       product: Red Hat Enterprise Linux for x86_64
+     - name: Red Hat Satellite Tools 6.6 for RHEL 8 x86_64 RPMs
+       product: Red Hat Enterprise Linux for x86_64
+#### 8.1
+     - name: Red Hat Enterprise Linux 8 for x86_64 - AppStream RPMs 8.1
+       product: Red Hat Enterprise Linux for x86_64
+     - name: Red Hat Enterprise Linux 8 for x86_64 - BaseOS RPMs 8.1
+       product: Red Hat Enterprise Linux for x86_64
+     - name: Red Hat Enterprise Linux 8 for x86_64 - AppStream Kickstart 8.1
+       product: Red Hat Enterprise Linux for x86_64
+     - name: Red Hat Enterprise Linux 8 for x86_64 - BaseOS Kickstart 8.1
+       product: Red Hat Enterprise Linux for x86_64
+     - name: Red Hat Enterprise Linux 8 for x86_64 - Supplementary RPMs 8.1
+       product: Red Hat Enterprise Linux for x86_64
+     - name: EPEL-8
+       product: Extra Packages for Enterprise Linux
+
+ - name: cv-os-rhel-7Server
+   organization: "{{ orgs }}"
+   repositories:
+### 7Severs
+     - name: Red Hat Enterprise Linux 7 Server RPMs x86_64 7Server
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 7 Server - Extras RPMs x86_64
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 7 Server - Optional RPMs x86_64 7Server
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 7 Server - RH Common RPMs x86_64 7Server
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 7 Server - Supplementary RPMs x86_64 7Server
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server x86_64 7Server
+       product: Red Hat Software Collections for RHEL Server
+#### 7.7
+     - name: Red Hat Enterprise Linux 7 Server RPMs x86_64 7.7
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 7 Server - Optional RPMs x86_64 7.7
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 7 Server - RH Common RPMs x86_64 7.7
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 7 Server - Supplementary RPMs x86_64 7.7
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server x86_64 7.7
+       product: Red Hat Software Collections for RHEL Server
+###### 7.6
+     - name: Red Hat Enterprise Linux 7 Server RPMs x86_64 7.6
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 7 Server - Optional RPMs x86_64 7.6
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 7 Server - RH Common RPMs x86_64 7.6
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 7 Server - Supplementary RPMs x86_64 7.6
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 7 Server x86_64 7.6
+       product: Red Hat Software Collections for RHEL Server
+#### All
+     - name: Red Hat Satellite Tools {{ satellite_version }} for RHEL 7 Server RPMs x86_64
+       product: Red Hat Enterprise Linux Server
+     - name: EPEL-7
+       #product: EPEL
+       product: Extra Packages for Enterprise Linux
+
+ - name: cv-os-rhel-6Server
+   organization: "{{ orgs }}"
+   repositories:
+### 6Severs
+     - name: Red Hat Enterprise Linux 6 Server RPMs x86_64 6Server
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 6 Server - Extras RPMs x86_64
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 6 Server - Optional RPMs x86_64 6Server
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 6 Server - RH Common RPMs x86_64 6Server
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 6 Server - Supplementary RPMs x86_64 6Server
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 6 Server x86_64 6Server
+       product: Red Hat Software Collections for RHEL Server
+#### 6.10 
+     - name: Red Hat Enterprise Linux 6 Server RPMs x86_64 6.10
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 6 Server - Optional RPMs x86_64 6.10
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 6 Server - RH Common RPMs x86_64 6.10
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 6 Server - Supplementary RPMs x86_64 6.10
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 6 Server x86_64 6.10
+       product: Red Hat Software Collections for RHEL Server
+##### 6.9
+     - name: Red Hat Enterprise Linux 6 Server RPMs x86_64 6.9
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 6 Server - Optional RPMs x86_64 6.9
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 6 Server - RH Common RPMs x86_64 6.9
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 6 Server - Supplementary RPMs x86_64 6.9
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Software Collections RPMs for Red Hat Enterprise Linux 6 Server x86_64 6.9
+       product: Red Hat Software Collections for RHEL Server
+#### All
+     - name: Red Hat Satellite Tools {{ satellite_version }} for RHEL 6 Server RPMs x86_64
+       product: Red Hat Enterprise Linux Server
+     - name: EPEL-6
+       product: Extra Packages for Enterprise Linux
+
+ - name: cv-os-rhel-5Server
+   organization: "{{ orgs }}"
+   repositories:
+### 5Severs
+     - name: Red Hat Enterprise Linux 5 Server RPMs x86_64 5Server
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 5 Server - RH Common RPMs x86_64 5Server
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Enterprise Linux 5 Server - Supplementary RPMs x86_64 5Server
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Satellite Tools {{ satellite_version }} (for RHEL 5 Server - ELS) (RPMs)
+       product: Red Hat Enterprise Linux Server
+
+### INFRA
+ - name: cv-infra-sat6-capsules
+   organization: "{{ orgs }}"
+   repositories:
+     - name: Red Hat Satellite Maintenance 6 for RHEL 7 Server RPMs x86_64 
+       product: Red Hat Enterprise Linux Server
+     - name: Red Hat Satellite Capsule {{ satellite_version }} for RHEL 7 Server RPMs x86_64
+       product: Red Hat Satellite Capsule
+     - name: Red Hat Ansible Engine 2.7 RPMs for Red Hat Enterprise Linux 7 Server x86_64
+       product: Red Hat Ansible Engine
+     - name: Red Hat Ansible Engine 2.8 RPMs for Red Hat Enterprise Linux 7 Server x86_64
+       product: Red Hat Ansible Engine
+#     - name: Red Hat Ansible Engine 2.9 RPMs for Red Hat Enterprise Linux 7 Server x86_64
+#       product: Red Hat Ansible Engine
+
+ - name: cv-infra-ocp311
+   organization: "{{ orgs }}"
+   repositories:
+     - name: Red Hat OpenShift Container Platform 3.11 RPMs x86_64
+       product: Red Hat OpenShift Container Platform
+     - name: Red Hat Ansible Engine 2.6 RPMs for Red Hat Enterprise Linux 7 Server x86_64
+       product: Red Hat Ansible Engine
+
+# - name: cv-infra-rhv43
+#   organization: "{{ orgs }}"
+#   repositories:
+#     - name: Red Hat 
+#       product: Red Hat 
+#     - name: Red Hat 
+#       product: Red Hat 
+ 
+### APPs
+ - name: cv-app-jboss-jws
+   organization: "{{ orgs }}"
+   repositories:
+     - name: JBoss Core Services RHEL 7 Server RPMs x86_64
+       product: Red Hat JBoss Core Services
+     - name: JBoss Web Server 5 RHEL 7 Server RPMs x86_64
+       product: JBoss Enterprise Web Server
+
+### Third Party
+- name: cv-app-sap-hana-rhel8
+   organization: "{{ orgs }}"
+   repositories:
+     - name: Red Hat Enterprise Linux 8 for x86_64 - SAP Solutions RPMs 8
+       product: Red Hat Enterprise Linux for SAP HANA for x86_64
+
+- name: cv-app-sap-hana-rhel7
+   organization: "{{ orgs }}"
+   repositories:
+     - name: Red Hat Enterprise Linux for SAP HANA RHEL 7 Server RPMs x86_64 7Server
+       product: Red Hat Enterprise Linux for SAP HANA for x86_64
+
+- name: cv-app-sap-rhel7
+   organization: "{{ orgs }}"
+   repositories:
+     - name: Red Hat Enterprise Linux for SAP RHEL 7 Server RPMs x86_64 7Server
+       product: Red Hat Enterprise Linux for SAP Applications for x86_64
+     - name: Red Hat Enterprise Linux for SAP RHEL 7 Server Debug RPMs x86_64 7Server
+       product: Red Hat Enterprise Linux for SAP Applications for x86_64
+
+- name: cv-app-sap-rhel6
+   organization: "{{ orgs }}"
+   repositories:
+     - name: Red Hat Enterprise Linux for SAP RHEL 6 Server RPMs x86_64 6Server
+       product: Red Hat Enterprise Linux for SAP Applications for x86_64
+     - name: Red Hat Enterprise Linux for SAP RHEL 6 Server Debug RPMs x86_64 6Server
+       product: Red Hat Enterprise Linux for SAP Applications for x86_64
+
+- name: cv-app-sap-rhel5
+   organization: "{{ orgs }}"
+   repositories:
+     #- name: Red Hat Enterprise Linux for SAP RHEL 5 Server RPMs x86_64 5Server
+     - name: Red Hat Enterprise Linux for SAP (RHEL 5 Server) (RPMs)
+       product: Red Hat Enterprise Linux for SAP Applications for x86_64
+
+configure_katello_compositive_content_views:
+### INFRA
+- name: ccv-infra-ocp311-rhel-7Server
+   organization: "{{ orgs }}"
+   auto_publish: true
+   components:
+     - content_view: cv-os-rhel-7Server
+       latest: true
+     - content_view: cv-infra-ocp311
+       latest: true
+
+ - name: ccv-infra-sat6-capsule-7Server
+   organization: "{{ orgs }}"
+   auto_publish: false
+   components:
+     - content_view: cv-os-rhel-7Server
+       latest: true
+     - content_view: cv-infra-sat6-capsules
+       latest: true
+
+### CCV - JBOSS
+ - name: ccv-app-jboss-jws-rh7
+   organization: "{{ orgs }}"
+   auto_publish: false
+   components:
+     - content_view: cv-os-rhel-7Server
+       latest: true
+     - content_view: cv-app-jboss-jws
+       latest: true
+
+### CCV - SAP
+- name: ccv-app-sap-rhel-7Server
+   organization: "{{ orgs }}"
+   auto_publish: true
+   components:
+     - content_view: cv-os-rhel-7Server
+       latest: true
+     - content_view: cv-app-sap-rhel7
+       latest: true
+
+- name: ccv-app-sap-rhel-7Server
+   organization: "{{ orgs }}"
+   auto_publish: true
+   components:
+     - content_view: cv-os-rhel-7Server
+       latest: true
+     - content_view: cv-app-sap-rhel7
+       latest: true
+ 
+- name: ccv-app-sap-rhel-6Server
+   organization: "{{ orgs }}"
+   auto_publish: true
+   components:
+     - content_view: cv-os-rhel-6Server
+       latest: true
+     - content_view: cv-app-sap-rhel6
+       latest: true
+ 
+- name: ccv-app-sap-rhel-5Server
+   organization: "{{ orgs }}"
+   auto_publish: true
+   components:
+     - content_view: cv-os-rhel-5Server
+       latest: true
+     - content_view: cv-app-sap-rhel5
+       latest: true
+ 
+- name: ccv-app-sap-hana-rhel-8Server
+   organization: "{{ orgs }}"
+   auto_publish: true
+   components:
+     - content_view: cv-os-rhel-8Server
+       latest: true
+     - content_view: cv-app-sap-hana-rhel8
+       latest: true
+ 
+- name: ccv-app-sap-hana-rhel-7Server
+   organization: "{{ orgs }}"
+   auto_publish: true
+   components:
+     - content_view: cv-os-rhel-7Server
+       latest: true
+     - content_view: cv-app-sap-hana-rhel7
+       latest: true

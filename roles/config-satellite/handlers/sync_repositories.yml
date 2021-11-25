@@ -1,0 +1,44 @@
+---
+- name: Kick off sync
+  theforeman.foreman.katello_sync:
+    username: "{{ configure_foreman_username }}"
+    password: "{{ configure_foreman_password }}"
+    server_url: "{{ configure_foreman_server_url }}"
+    validate_certs: "{{ configure_foreman_validate_certs }}"
+    repository: "{{ item.repo_name }}"
+    product: "{{ item.product }}"
+    organization: "{{ item.organization }}"
+  loop: "{{ configure_katello_repository_sets }}"
+  async: 999999
+  poll: 0
+  register: repo_sync_sleeper
+  when: item.state == "enabled" 
+  delegate_to: "{{ 'localhost' if foreman_local else omit }}"
+
+- name: Kick off sync custom repos
+  theforeman.foreman.katello_sync:
+    username: "{{ configure_foreman_username }}"
+    password: "{{ configure_foreman_password }}"
+    server_url: "{{ configure_foreman_server_url }}"
+    validate_certs: "{{ configure_foreman_validate_certs }}"
+    repository: "{{ item.name }}"
+    product: "{{ item.product }}"
+    organization: "{{ item.organization }}"
+  loop: "{{ configure_katello_repositories }}"
+  async: 999999
+  poll: 0
+  register: repo_sync_sleeper_custom
+  when: item.state == "present"
+  delegate_to: "{{ 'localhost' if foreman_local else omit }}"
+
+- name: wait for sync tasks to complete
+  action: >
+    shell hammer
+    --csv task list
+    --search 'label = Actions::Katello::Repository::Sync and state = running'
+  register: running_sync_tasks
+  until: running_sync_tasks.stdout.find("running") == -1
+  delay: 60
+  retries: 600
+  changed_when: false
+  delegate_to: "{{ satellite_fqdn }}"

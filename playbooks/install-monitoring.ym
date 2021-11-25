@@ -1,0 +1,10 @@
+---
+- hosts: satelliteServers
+  gather_facts: yes
+  become: yes
+  become_method: sudo
+  become_user: root
+  remote_user: ansible
+  roles:
+    - role: ../roles/monitoring-satellite
+

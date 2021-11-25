@@ -1,0 +1,11 @@
+configure_katello_content_view_versions:
+##Publish and promote all envs
+  - content_view: ccv-app-jboss-jws-rh7
+    organization: "{{ orgs }}"
+    lifecycle_environments: "{{ configure_katello_lifecycle_environment | map(attribute='name') | list }}"
+    state: present
+
+  - content_view: ccv-infra-sat6-capsule-rh7
+    organization: "{{ orgs }}"
+    lifecycle_environments: "{{ configure_katello_lifecycle_environment | map(attribute='name') | list }}"
+    state: present

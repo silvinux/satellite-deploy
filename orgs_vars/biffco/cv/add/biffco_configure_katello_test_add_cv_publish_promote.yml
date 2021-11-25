@@ -1,0 +1,9 @@
+configure_katello_content_view_versions:
+##Publish and promote from one env to another
+  - content_view: cv-rhel7
+    organization: biffco
+    current_lifecycle_environment: Library
+    lifecycle_environments:
+      - test
+    version: 3.3
+    state: present

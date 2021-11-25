@@ -1,0 +1,23 @@
+configure_katello_sync_plans:
+  - name: Red Hat Sync Plan
+    organization: "{{ orgs }}"
+    interval: daily
+    enabled: true
+    sync_date: "2020-02-16 00:00:00"
+    products:
+      - 'Red Hat Enterprise Linux Server'
+      #- 'Red Hat Enterprise Linux for x86_64'
+      - 'Red Hat Ansible Engine'
+      - 'Red Hat Satellite Capsule'
+      - 'Red Hat Software Collections for RHEL Server'
+      - 'JBoss Enterprise Application Platform'
+      - 'JBoss Enterprise Web Server'
+      - 'Red Hat JBoss Core Services'
+      #- 'Red Hat Virtualization'
+      #- 'Red Hat Virtualization Manager'
+      #- 'Red Hat OpenShift Container Platform'
+      #- 'Red Hat Enterprise Linux High Availability for x86_64'
+      #- ''
+      #- ''
+      #- 'EPEL'
+      - 'Extra Packages for Enterprise Linux'

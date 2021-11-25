@@ -1,0 +1,22 @@
+configure_katello_content_view_versions:
+##Publish and promote all envs
+  - content_view: cv-infra-sat6-capsules
+    organization: "{{ orgs }}"
+    lifecycle_environments: "{{ configure_katello_lifecycle_environment | map(attribute='name') | list }}"
+    state: present
+#  - content_view: cv-infra-rhev
+#    organization: "{{ orgs }}"
+#    lifecycle_environments: "{{ configure_katello_lifecycle_environment | map(attribute='name') | list }}"
+#    state: present
+#  - content_view: cv-infra-openshift
+#    organization: "{{ orgs }}"
+#    lifecycle_environments: "{{ configure_katello_lifecycle_environment | map(attribute='name') | list }}"
+#    state: present
+#  - content_view: cv-infra-tower
+#    organization: "{{ orgs }}"
+#    lifecycle_environments: "{{ configure_katello_lifecycle_environment | map(attribute='name') | list }}"
+#    state: present
+#  - content_view: cv-infra-cloudforms
+#    organization: "{{ orgs }}"
+#    lifecycle_environments: "{{ configure_katello_lifecycle_environment | map(attribute='name') | list }}"
+#    state: present

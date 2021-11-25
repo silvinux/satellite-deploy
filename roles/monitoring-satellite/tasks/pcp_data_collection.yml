@@ -1,0 +1,102 @@
+---
+- name: Monitoring Satellite | Configuring PCP Data Collection | Create foreman-hotproc Directery on Satellite Server
+  file:
+    path: /var/lib/pcp/config/pmlogconf/foreman-hotproc
+    state: directory
+
+- name: Monitoring Satellite | Configuring PCP Data Collection | Configuring PCP Data Collection 
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner }}" 
+    group: "{{ item.group }}" 
+    mode: "{{ item.mode }}"
+    setype: "{{ item.setype }}"
+  loop:
+    - {src: files/hotproc.conf, dest: /var/lib/pcp/pmdas/proc/hotproc.conf, mode: 644, owner: root, group: root, setype: pcp_var_lib_t }
+    - {src: files/foreman_hotproc_summary, dest: /var/lib/pcp/config/pmlogconf/foreman-hotproc/summary, mode: 644, owner: root, group: root, setype: pcp_var_lib_t}
+    - {src: files/httpd_01-status.conf, dest: /etc/httpd/conf.d/01-status.conf, mode: 644, owner: root, group: root, setype: httpd_config_t}
+    - {src: files/etc_cron.daily_refresh_mmv, dest: /etc/cron.daily/refresh_mmv, mode: 755, owner: root, group: root, setype: bin_t}
+
+- name: Monitoring Satellite | Configuring PCP Data Collection | Install the process monitoring PMDA 
+  command: "./Install"
+  args:
+    chdir: /var/lib/pcp/pmdas/proc
+  register: monitoring_pmda_result
+
+- name: Monitoring Satellite | Configuring PCP Data Collection | Enable the Apache HTTP Server PMDA
+  shell: "80|./Install"
+  args:
+    chdir: /var/lib/pcp/pmdas/apache
+  register: monitoring_pmda_httpd_result
+
+- name: Monitoring Satellite | Configuring PCP Data Collection | Prevent the Satellite installer overwriting the extended status module’s configuration file
+  lineinfile:
+    path: /etc/foreman-installer/custom-hiera.yaml
+    insertafter: 'EOF'
+    line: 'apache::purge_configs: false'
+
+- name: Monitoring Satellite | Configuring PCP Data Collection | Configure PCP to collect metrics from PostgreSQL
+  command: "./Install"
+  args:
+    chdir: /var/lib/pcp/pmdas/postgresql
+  register: monitoring_pmda_httpd_result
+
+- name: Monitoring Satellite | Configuring PCP Data Collection | Get database information stored in /etc/foreman/database.yml
+  shell: "awk '/password/{print $2}' /etc/foreman/database.yml"
+  register: foreman_database_pwd_yml
+
+- name: Monitoring Satellite | Configuring PCP Data Collection | Set foreman database pwd
+  set_fact: 
+    foreman_database_pwd: "{{ foreman_database_pwd_yml.stdout }}"
+
+- name: Monitoring Satellite | Configuring PCP Data Collection | Template file to /etc/pcpdbi.conf
+  template:
+    src: templates/etc_pcpdbi.conf.j2
+    dest: /etc/pcpdbi.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Monitoring Satellite | Configuring PCP Data Collection | Change the SELinux pcp_pmcd_t domain permission to permit PCP access to the PostgreSQL database
+  shell: "/usr/sbin/semanage permissive -a pcp_pmcd_t"
+
+- name: Monitoring Satellite  | Configuring PCP Data Collection | Enable the Satellite telemetry functionality.  
+  replace:
+    path: /etc/foreman/settings.yaml
+    before: '    :host:'
+    after: '  :statsd:'
+    replace: '    :enabled: true'
+    regexp: '    :enabled: false'
+
+- name: Monitoring Satellite | Configuring PCP Data Collection | Restart the Apache HTTP Server and PCP to begin data collection
+  service:
+    name: "{{ item }}"
+    state: restarted
+  loop:
+    - pcp-mmvstatsd
+    - httpd
+    - pmcd
+    - pmlogger
+    - pmwebd
+
+- name: Monitoring Satellite | Configuring PCP Data Collection | Restart the Apache HTTP Server and PCP to begin data collection
+  service:
+    name: "{{ item }}"
+    enabled: yes
+  loop:
+    - pcp-mmvstatsd
+    - pmcd
+    - pmlogger
+    - pmwebd
+
+
+- name: Monitoring Satellite | Configuring PCP Data Collection | Opening Firewalld ports
+  become: "yes"
+  firewalld:
+    permanent: "yes"
+    immediate: "yes"
+    port: "{{ item }}"
+    state: "enabled"
+  loop:
+    - 44323/tcp

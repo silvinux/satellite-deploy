@@ -1,0 +1,27 @@
+configure_katello_content_view_versions:
+##Publish and promote from one env to another
+  - content_view: cv-infra-sat6-capsules
+    organization: "{{ orgs }}"
+    lifecycle_environments:
+      - Library
+    state: present
+#  - content_view: cv-infra-rhev
+#    organization: "{{ orgs }}"
+#    lifecycle_environments:
+#      - Library
+#    state: present
+#  - content_view: cv-infra-openshift
+#    organization: "{{ orgs }}"
+#    lifecycle_environments:
+#      - Library
+#    state: present
+#  - content_view: cv-infra-tower
+#    organization: "{{ orgs }}"
+#    lifecycle_environments:
+#      - Library
+#    state: present
+#  - content_view: cv-infra-cloudforms
+#    organization: "{{ orgs }}"
+#    lifecycle_environments:
+#      - Library
+#    state: present

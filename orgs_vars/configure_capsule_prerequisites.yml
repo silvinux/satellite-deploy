@@ -1,0 +1,67 @@
+---
+# File systems
+pvname: vdb
+vgname: vg_capsule
+lvm_fs:
+    - { lvname: 'var_cache_pulp_lv', lvsize: '10G', fspath: '/var/cache/pulp/' }
+    - { lvname: 'var_lib_pulp_lv', lvsize: '150G', fspath: '/var/lib/pulp/' }
+    - { lvname: 'var_lib_mongodb_lv', lvsize: '25G', fspath: '/var/lib/mongodb/' }
+
+# Versions
+satellite_version: 6.6
+ansible_ver: 2.8
+capsule_activation_key: "ak-infratest-sat6-capsule-rh7"
+
+# Repos
+rhsm_repos:
+  - rhel-7-server-rpms
+  - rhel-7-server-extras-rpms
+  - rhel-server-rhscl-7-rpms
+  - rhel-7-server-optional-rpms
+  - rhel-7-server-supplementary-rpms
+  - rhel-7-server-satellite-maintenance-6-rpms
+  - "rhel-7-server-satellite-capsule-{{ satellite_version }}-rpms"
+  - "rhel-7-server-ansible-{{ ansible_ver }}-rpms"
+  - "rhel-7-server-satellite-tools-{{ satellite_version }}-rpms"
+
+# Packages
+yum_packages:
+  - lvm2
+  - wget
+  - git
+  - net-tools
+  - bind-utils
+  - yum-utils
+  - bash-completion
+  - kexec-tools
+  - sos
+  - ipa-client
+  - satellite-capsule
+
+# Firewall services and ports
+capsule_deployment_fw_ports:
+  - 443/tcp
+  - 80/tcp
+  - 5647/tcp
+  - 8000/tcp
+  - 8140/tcp
+  - 8443/tcp
+  - 9090/tcp
+  - 5000/tcp
+  - 53/tcp
+  - 53/udp
+  - 67/udp
+  - 69/udp
+  - 5646/tcp
+  - 7/udp
+  - 7/tcp
+  - 68/udp
+capsule_deployment_plugin_ports: []
+capsule_deployment_fw_services: []
+
+# Selinux
+deployment_selinux: True
+selinux_policy: targeted
+selinux_state: enforcing
+selinux_booleans:
+  - { name: 'nis_enabled', state: 'on', persistent: 'yes' }

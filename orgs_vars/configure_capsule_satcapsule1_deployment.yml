@@ -1,0 +1,15 @@
+---
+# -------------------------------------------------------------------------------------
+# Certs info
+# -------------------------------------------------------------------------------------
+# Directory and certs MUST be previusly copy and create in satellite server. 
+# Role will create the directory and certs will be copied, from satellite to capsule
+# Cert MUST be copied in satellite server at {{ capsule_deployment_server_certs_dir }}. 
+# e.g. ~/capsule_cert/{satcapsule1.bcnconsulting.com.{key,cert}.pem,ca-chain.cert.pem}
+# -------------------------------------------------------------------------------------
+capsule_deployment_server_certs_dir: '/root/capsule_cert'
+capsule_deployment_server_cert: satcapsule1.bcnconsulting.com.cert.pem
+capsule_deployment_server_key: satcapsule1.bcnconsulting.com.key.pem
+capsule_deployment_server_ca_cert: ca-chain.cert.pem
+capsule_deployment_installer_enable_remote_execution_ssh: true
+capsule_deployment_loadbalancer: lbsat.bcnconsulting.com

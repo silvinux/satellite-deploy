@@ -1,0 +1,2 @@
+configure_katello_locations:
+  - { name: MAD, state: present, organization: biffco }

@@ -1,0 +1,27 @@
+configure_katello_lifecycle_environment:
+  - name: test
+    organization: biffco
+    description: Test env for app servers
+    prior: Library
+    state: present
+  - name: dev
+    organization: biffco
+    description: Dev env for app servers
+    prior: test
+    state: present
+  - name: prod
+    organization: biffco
+    description: Prod env for app servers
+    prior: dev
+    state: present
+
+  - name: infra-test
+    organization: biffco
+    description: Test env for infra servers
+    prior: Library
+    state: present
+  - name: infra-prod
+    organization: biffco
+    description: Prod env for infra servers
+    prior: infra-test
+    state: present

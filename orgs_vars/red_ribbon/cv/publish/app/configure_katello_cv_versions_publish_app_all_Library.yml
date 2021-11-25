@@ -1,0 +1,15 @@
+configure_katello_content_view_versions:
+###Publish and promote from one env to another
+  - content_view: cv-app-jboss-jws
+    organization: "{{ orgs }}"
+    lifecycle_environments:
+      - Library
+    state: present
+#  - content_view: cv-app-jboss-7
+#    organization: "{{ orgs }}"
+#    lifecycle_environments:
+#      - Library
+#  - content_view: cv-app-apache-php
+#    organization: "{{ orgs }}"
+#    lifecycle_environments:
+#      - Library

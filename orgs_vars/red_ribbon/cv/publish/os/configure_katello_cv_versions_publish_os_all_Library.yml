@@ -1,0 +1,25 @@
+configure_katello_content_view_versions:
+##Publish and promote from one env to another
+#  - content_view: cv-os-rhel-8Server
+#    organization: "{{ orgs }}"
+#    lifecycle_environments:
+#      - Library
+#    state: present
+
+  - content_view: cv-os-rhel-7Server
+    organization: "{{ orgs }}"
+    lifecycle_environments:
+      - Library
+    state: present
+
+#  - content_view: cv-os-rhel-6Server
+#    organization: "{{ orgs }}"
+#    lifecycle_environments:
+#      - Library
+#    state: present
+#
+#  - content_view: cv-os-rhel-5Server
+#    organization: "{{ orgs }}"
+#    lifecycle_environments:
+#      - Library
+#    state: present

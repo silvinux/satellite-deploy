@@ -1,0 +1,45 @@
+---
+# Register RHN info
+rhn_user: "{{ vault_rhn_user }}"
+rhn_pwd: "{{ vault_rhn_pwd }}"
+rhn_pool_ids: "{{ vault_rhn_pool_ids }}"
+
+# Satellite info
+satellite_fqdn: satellite.bcnconsulting.com
+satellite_version: 6.6
+foreman_local: true
+configure_foreman_username: "{{ vault_foreman_admin_username | default('admin') }}"
+configure_foreman_password: "{{ vault_foreman_admin_password | default('redhat00') }}"
+configure_foreman_default_location: "{{ location | default('BCN') }}"
+configure_foreman_default_organization: "{{ orgs | default('red_ribbon') }}"
+configure_foreman_server_url: "https://{{ satellite_fqdn }}"
+configure_foreman_validate_certs: false
+
+# Satellite certificates
+satellite_deployment_certs: false
+satellite_deployment_server_certs_dir: '~/capsule_cert' 
+# Copy files to Satellite Server
+satellite_deployment_certs_server_copy:
+  - ~/ca/intermediate/certs/satellite.bcnconsulting.com.cert.pem
+  - ~/ca/intermediate/private/satellite.bcnconsulting.com.key.pem
+  - ~/ca/intermediate/certs/satcapsule1.bcnconsulting.com.cert.pem
+  - ~/ca/intermediate/private/satcapsule1.bcnconsulting.com.key.pem
+  - ~/ca/intermediate/certs/satcapsule2.bcnconsulting.com.cert.pem
+  - ~/ca/intermediate/private/satcapsule2.bcnconsulting.com.key.pem
+  - ~/ca/intermediate/certs/ca-chain.cert.pem
+
+# IPA Enabled / Disabled
+satellite_ipa_integrated: "true"
+
+# Firewall services and ports
+deployment_firewall: true
+
+# Selinux
+deployment_selinux: true
+
+# Manifest
+satellite_deployment_server_manifest_dir: '~/manifests'
+satellite_deployment_manifest_server_copy:
+  - /root/sat-files/manifest_red_ribbon_20200213T145138Z.zip
+# manifest_state: absent, present, refreshed
+configure_katello_manifest_state: present

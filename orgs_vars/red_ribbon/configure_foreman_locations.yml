@@ -1,0 +1,9 @@
+configure_foreman_locations:
+  - { name: BCN, state: present, organization: "{{ orgs }}" }
+  - { name: MAD, state: present, organization: "{{ orgs }}" }
+  - { name: ALC1, state: present, organization: "{{ orgs }}" }
+  - { name: ALC2, state: present, organization: "{{ orgs }}" }
+  - { name: SFB, state: present, organization: "{{ orgs }}" }
+  - { name: CBS, state: present, organization: "{{ orgs }}" }
+  - { name: AZR, state: present, organization: "{{ orgs }}" }
+  - { name: AWS, state: present, organization: "{{ orgs }}" }

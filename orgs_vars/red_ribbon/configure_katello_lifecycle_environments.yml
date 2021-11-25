@@ -1,0 +1,37 @@
+configure_katello_lifecycle_environment:
+  - name: Development
+    organization: "{{ orgs }}"
+    description: Development env for app servers
+    prior: Library
+    state: present
+  - name: UAT
+    organization: "{{ orgs }}"
+    description: UAT env for app servers
+    prior: Development
+    state: present
+  - name: Integration
+    organization: "{{ orgs }}"
+    description: Integration env for app servers
+    prior: UAT
+    state: present
+  - name: Preproduction
+    organization: "{{ orgs }}"
+    description: Preproduction env for app servers
+    prior: Integration
+    state: present
+  - name: Production
+    organization: "{{ orgs }}"
+    description: Production env for app servers
+    prior: Preproduction
+    state: present
+
+  - name: InfraTest
+    organization: "{{ orgs }}"
+    description: Test env for infra servers
+    prior: Library
+    state: present
+  - name: InfraProd
+    organization: "{{ orgs }}"
+    description: Prod env for infra servers
+    prior: InfraTest
+    state: present

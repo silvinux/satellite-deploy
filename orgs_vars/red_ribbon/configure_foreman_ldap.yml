@@ -1,0 +1,21 @@
+configure_foreman_ldap:
+  - name: idm_consulting
+    host: idm.bcnconsulting.com
+    onthefly_register: True
+    account: uid=sat-binddn,cn=sysaccounts,cn=etc,dc=bcnconsulting,dc=com
+    account_password: "{{ vault_ldap_account_password | default ('redhat00')}}"
+    base_dn: dc=bcnconsulting,dc=com
+    groups_base: cn=groups,cn=accounts,dc=bcnconsulting,dc=com
+    ldap_filter: "(&(objectclass=*)(|(memberOf=cn=sat-admins,cn=groups,cn=accounts,dc=bcnconsulting,dc=com)(memberOf=cn=sat-ops,cn=groups,cn=accounts,dc=bcnconsulting,dc=com)))"
+    server_type: free_ipa
+    organizations: 
+      - "{{ orgs }}"
+    locations:
+      - BCN
+      - MAD
+    state: present
+    attr_login: uid
+    attr_firstname: givenName
+    attr_lastname: sn
+    attr_mail: mail
+    attr_photo: jpegPhoto

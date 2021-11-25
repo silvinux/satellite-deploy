@@ -1,0 +1,8 @@
+configure_katello_content_view_versions:
+##Delete cv version
+  - content_view: cv-rhel7
+    organization: biffco
+    #lifecycle_environments: "{{ configure_katello_lifecycle_environment | map(attribute='name') | list }}"
+    lifeclycle_environments: Library
+    version: 1.0
+    state: absent

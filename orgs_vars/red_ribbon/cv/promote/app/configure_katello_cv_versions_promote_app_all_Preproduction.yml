@@ -1,0 +1,8 @@
+configure_katello_content_view_versions:
+##Publish and promote from one env to another
+  - content_view: cv-app-jboss-jws
+    organization: "{{ orgs }}"
+    current_lifecycle_environment: Integration
+    lifecycle_environments:
+      - Preproduction
+    state: present

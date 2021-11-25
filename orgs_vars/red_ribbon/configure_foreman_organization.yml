@@ -1,0 +1,2 @@
+configure_foreman_organizations:
+  - { name: "{{ orgs }}", state: present, manifest: "/root/sat-files/manifest_red_ribbon_20200213T145138Z.zip" }

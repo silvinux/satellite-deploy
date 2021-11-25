@@ -1,0 +1,9 @@
+configure_katello_content_view_versions:
+##Publish and promote from one env to another
+# INFRA
+  - content_view: ccv-infra-sat6-capsule-rh7
+    organization: "{{ orgs }}"
+    current_lifecycle_environment: Library
+    lifecycle_environments:
+      - InfraTest
+    state: present

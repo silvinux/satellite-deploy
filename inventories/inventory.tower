@@ -1,0 +1,11 @@
+[tower]
+tower1.bcnconsulting.com 
+tower2.bcnconsulting.com 
+tower3.bcnconsulting.com 
+
+[database]
+towerdb.bcnconsulting.com
+
+[towercli:children]
+tower
+#isotaled_nodes

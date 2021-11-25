@@ -1,0 +1,47 @@
+---
+pvname: vdb
+vgname: vg_satellite
+lvm_fs:
+    - { lvname: 'var_cache_pulp_lv', lvsize: '10G', fspath: '/var/cache/pulp/' }
+    - { lvname: 'var_lib_pulp_lv', lvsize: '150G', fspath: '/var/lib/pulp/' }
+    - { lvname: 'var_lib_mongodb_lv', lvsize: '25G', fspath: '/var/lib/mongodb/' }
+    - { lvname: 'var_lib_pgsql_lv', lvsize: '5G', fspath: '/var/lib/pgsql/' }
+    - { lvname: 'var_spool_squid_lv', lvsize: '5G', fspath: '/var/spool/squid/' }
+    - { lvname: 'var_log_pcp_lv', lvsize: '20G', fspath: '/var/log/pcp' }
+
+ansible_ver: 2.8
+rhsm_repos:
+  - rhel-7-server-rpms
+  - rhel-7-server-extras-rpms
+  - rhel-server-rhscl-7-rpms
+  - rhel-7-server-optional-rpms
+  - rhel-7-server-supplementary-rpms
+  - rhel-7-server-satellite-maintenance-6-rpms
+  - "rhel-7-server-satellite-{{ satellite_version }}-rpms"
+  - "rhel-7-server-ansible-{{ ansible_ver }}-rpms"
+
+yum_packages:
+  - lvm2
+  - wget
+  - git
+  - net-tools
+  - bind-utils
+  - yum-utils
+  - bash-completion
+  - kexec-tools
+  - sos
+  - ipa-client
+  - satellite
+
+# Selinux
+selinux_policy: targeted
+selinux_state: enforcing
+selinux_booleans:
+  - { name: 'nis_enabled', state: 'on', persistent: 'yes' }
+
+# Firewall services and ports
+capsule_deployment_fw_ports: []
+capsule_deployment_plugin_ports: []
+capsule_deployment_fw_services:
+    - ssh
+    - RH-Satellite-6

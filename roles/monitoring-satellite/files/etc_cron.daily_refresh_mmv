@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "log mandatory on 1 minute mmv" | /usr/bin/pmlc -P

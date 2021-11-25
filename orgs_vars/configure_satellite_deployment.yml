@@ -1,0 +1,36 @@
+---
+# Satellite proxy
+#satellite_deployment_proxy_url: "{{ vault_katello_proxy_url }}"
+#satellite_deployment_proxy_port: "{{ vault_katello_proxy_port }}"
+#satellite_deployment_proxy_username: "{{ vault_katello_proxy_username }}"
+#satellite_deployment_proxy_password: "{{ vault_katello_proxy_password }}"
+
+# Satellite certificates
+#satellite_deployment_server_certs_dir: '/root/capsule_cert'
+#satellite_deployment_certs_server_cert: "satellite.bcnconsulting.com.cert.pem"
+#satellite_deployment_certs_server_key: "satellite.bcnconsulting.com.key.pem"
+#satellite_deployment_certs_server_ca_cert: "ca-chain.cert.pem"
+
+# network
+satellite_deployment_ip_address: "10.0.0.10"
+satellite_deployment_network_address: "10.0.0.10"
+satellite_deployment_net_prefix: "24"
+satellite_deployment_gw_address: "10.0.0.1"
+satellite_deployment_net_interface: "eth0"
+satellite_deployment_subnet_name: "provisioning"
+
+#TFTP
+satellite_deployment_tftp: "true"
+
+#DNS
+satellite_deployment_dns: "false"
+satellite_deployment_dns_interface: "{{ satellite_deployment_net_interface }}"
+satellite_deployment_dns_forwarder: "[]"
+satellite_deployment_dns_zone: "bcn.consulting.com"
+satellite_deployment_dns_reverse_zone: "0.0.10.in-addr.arpa"
+
+#DHCP
+satellite_deployment_dhcp: "false"
+satellite_deployment_dhcp_interface: "{{ satellite_deployment_net_interface }}"
+satellite_deployment_dhcp_start: "10.0.0.50"
+satellite_deployment_dhcp_end: "10.0.0.60"

@@ -1,0 +1,97 @@
+OS_subscriptions:
+  - name: Employee SKU
+  - name: Extra Packages for Enterprise Linux
+
+jws_subscriptions:
+  - name: Employee SKU
+
+sat_subscriptions:
+  - name: Employee SKU
+
+configure_katello_activation_keys:
+## ak-{environment}-{os}-{release}
+#### DEVELOPMENT
+### rhel8
+#- { name: ak-dev-os-rhel-8server, content_view: cv-os-rhel-8Server, release_version: 8Server, organization: "{{ orgs }}", lifecycle_environment: Development, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-dev-os-rhel-81, content_view: cv-os-rhel-8Server, release_version: 8.1, organization: "{{ orgs }}", lifecycle_environment: Development, subscriptions: "{{ OS_subscriptions }}" }
+### rhel7
+- { name: ak-dev-os-rhel-7server, content_view: cv-os-rhel-7Server, release_version: 7Server, organization: "{{ orgs }}", lifecycle_environment: Development, subscriptions: "{{ OS_subscriptions }}" }
+- { name: ak-dev-os-rhel-77, content_view: cv-os-rhel-7Server, release_version: 7.7, organization: "{{ orgs }}", lifecycle_environment: Development, subscriptions: "{{ OS_subscriptions }}" }
+- { name: ak-dev-os-rhel-76, content_view: cv-os-rhel-7Server, release_version: 7.6, organization: "{{ orgs }}", lifecycle_environment: Development, subscriptions: "{{ OS_subscriptions }}" }
+### rhel6
+#- { name: ak-dev-os-rhel-6server, content_view: cv-os-rhel-6Server, release_version: 6Server, organization: "{{ orgs }}", lifecycle_environment: Development, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-dev-os-rhel-610, content_view: cv-os-rhel-6Server, release_version: 6.10, organization: "{{ orgs }}", lifecycle_environment: Development, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-dev-os-rhel-69, content_view: cv-os-rhel-6Server, release_version: 6.9, organization: "{{ orgs }}", lifecycle_environment: Development, subscriptions: "{{ OS_subscriptions }}" }
+### rhel5
+#- { name: ak-dev-os-rhel-5server, content_view: cv-os-rhel-5Server, release_version: 5Server, organization: "{{ orgs }}", lifecycle_environment: Development, subscriptions: "{{ OS_subscriptions }}" }
+
+#### UAT
+### rhel8
+#- { name: ak-uat-os-rhel-8server, content_view: cv-os-rhel-8Server, release_version: 8Server, organization: "{{ orgs }}", lifecycle_environment: UAT, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-uat-os-rhel-81, content_view: cv-os-rhel-8Server, release_version: 8.1, organization: "{{ orgs }}", lifecycle_environment: UAT, subscriptions: "{{ OS_subscriptions }}" }
+### rhel7
+- { name: ak-uat-os-rhel-7server, content_view: cv-os-rhel-7Server, release_version: 7Server, organization: "{{ orgs }}", lifecycle_environment: UAT, subscriptions: "{{ OS_subscriptions }}" }
+- { name: ak-uat-os-rhel-77, content_view: cv-os-rhel-7Server, release_version: 7.7, organization: "{{ orgs }}", lifecycle_environment: UAT, subscriptions: "{{ OS_subscriptions }}" }
+- { name: ak-uat-os-rhel-76, content_view: cv-os-rhel-7Server, release_version: 7.6, organization: "{{ orgs }}", lifecycle_environment: UAT, subscriptions: "{{ OS_subscriptions }}" }
+### rhel6
+#- { name: ak-uat-os-rhel-6server, content_view: cv-os-rhel-7Server, release_version: 6Server, organization: "{{ orgs }}", lifecycle_environment: UAT, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-uat-os-rhel-610, content_view: cv-os-rhel-7Server, release_version: 6.10, organization: "{{ orgs }}", lifecycle_environment: UAT, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-uat-os-rhel-69, content_view: cv-os-rhel-7Server, release_version: 6.9, organization: "{{ orgs }}", lifecycle_environment: UAT, subscriptions: "{{ OS_subscriptions }}" }
+#### rhel5
+#- { name: ak-uat-os-rhel-5server, content_view: cv-os-rhel-5Server, release_version: 5Server, organization: "{{ orgs }}", lifecycle_environment: UAT, subscriptions: "{{ OS_subscriptions }}" }
+  
+#### Integration
+### rhel8
+#- { name: ak-int-os-rhel-8server, content_view: cv-os-rhel-8Server, release_version: 8Server, organization: "{{ orgs }}", lifecycle_environment: Integration, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-int-os-rhel-81, content_view: cv-os-rhel-8Server, release_version: 8.1, organization: "{{ orgs }}", lifecycle_environment: Integration, subscriptions: "{{ OS_subscriptions }}" }
+### rhel7
+- { name: ak-int-os-rhel-7server, content_view: cv-os-rhel-7Server, release_version: 7Server, organization: "{{ orgs }}", lifecycle_environment: Integration, subscriptions: "{{ OS_subscriptions }}" }
+- { name: ak-int-os-rhel-77, content_view: cv-os-rhel-7Server, release_version: 7.7, organization: "{{ orgs }}", lifecycle_environment: Integration, subscriptions: "{{ OS_subscriptions }}" }
+- { name: ak-int-os-rhel-76, content_view: cv-os-rhel-7Server, release_version: 7.6, organization: "{{ orgs }}", lifecycle_environment: Integration, subscriptions: "{{ OS_subscriptions }}" }
+### rhel6
+#- { name: ak-int-os-rhel-6server, content_view: cv-os-rhel-7Server, release_version: 6Server, organization: "{{ orgs }}", lifecycle_environment: Integration, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-int-os-rhel-610, content_view: cv-os-rhel-7Server, release_version: 6.10, organization: "{{ orgs }}", lifecycle_environment: Integration, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-int-os-rhel-69, content_view: cv-os-rhel-7Server, release_version: 6.9, organization: "{{ orgs }}", lifecycle_environment: Integration, subscriptions: "{{ OS_subscriptions }}" }
+#### rhel5
+#- { name: ak-int-os-rhel-5server, content_view: cv-os-rhel-5Server, release_version: 5Server, organization: "{{ orgs }}", lifecycle_environment: Integration, subscriptions: "{{ OS_subscriptions }}" }
+
+#### Preproduction
+### rhel8
+#- { name: ak-pre-os-rhel-8server, content_view: cv-os-rhel-8Server, release_version: 8Server, organization: "{{ orgs }}", lifecycle_environment: Preproduction, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-pre-os-rhel-81, content_view: cv-os-rhel-8Server, release_version: 8.1, organization: "{{ orgs }}", lifecycle_environment: Preproduction, subscriptions: "{{ OS_subscriptions }}" }
+### rhel7
+- { name: ak-pre-os-rhel-7server, content_view: cv-os-rhel-7Server, release_version: 7Server, organization: "{{ orgs }}", lifecycle_environment: Preproduction, subscriptions: "{{ OS_subscriptions }}" }
+- { name: ak-pre-os-rhel-77, content_view: cv-os-rhel-7Server, release_version: 7.7, organization: "{{ orgs }}", lifecycle_environment: Preproduction, subscriptions: "{{ OS_subscriptions }}" }
+- { name: ak-pre-os-rhel-76, content_view: cv-os-rhel-7Server, release_version: 7.6, organization: "{{ orgs }}", lifecycle_environment: Preproduction, subscriptions: "{{ OS_subscriptions }}" }
+### rhel6
+#- { name: ak-pre-os-rhel-6server, content_view: cv-os-rhel-7Server, release_version: 6Server, organization: "{{ orgs }}", lifecycle_environment: Preproduction, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-pre-os-rhel-610, content_view: cv-os-rhel-7Server, release_version: 6.10, organization: "{{ orgs }}", lifecycle_environment: Preproduction, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-pre-os-rhel-69, content_view: cv-os-rhel-7Server, release_version: 6.9, organization: "{{ orgs }}", lifecycle_environment: Preproduction, subscriptions: "{{ OS_subscriptions }}" }
+#### rhel5
+#- { name: ak-pre-os-rhel-5server, content_view: cv-os-rhel-5Server, release_version: 5Server, organization: "{{ orgs }}", lifecycle_environment: Preproduction, subscriptions: "{{ OS_subscriptions }}" }
+
+#### Production
+### rhel8
+#- { name: ak-pro-os-rhel-8server, content_view: cv-os-rhel-8Server, release_version: 8Server, organization: "{{ orgs }}", lifecycle_environment: Production, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-pro-os-rhel-81, content_view: cv-os-rhel-8Server, release_version: 8.1, organization: "{{ orgs }}", lifecycle_environment: Production, subscriptions: "{{ OS_subscriptions }}" }
+### rhel7
+- { name: ak-pro-os-rhel-7server, content_view: cv-os-rhel-7Server, release_version: 7Server, organization: "{{ orgs }}", lifecycle_environment: Production, subscriptions: "{{ OS_subscriptions }}" }
+- { name: ak-pro-os-rhel-77, content_view: cv-os-rhel-7Server, release_version: 7.7, organization: "{{ orgs }}", lifecycle_environment: Production, subscriptions: "{{ OS_subscriptions }}" }
+- { name: ak-pro-os-rhel-76, content_view: cv-os-rhel-7Server, release_version: 7.6, organization: "{{ orgs }}", lifecycle_environment: Production, subscriptions: "{{ OS_subscriptions }}" }
+### rhel6
+#- { name: ak-pro-os-rhel-6server, content_view: cv-os-rhel-7Server, release_version: 6Server, organization: "{{ orgs }}", lifecycle_environment: Production, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-pro-os-rhel-610, content_view: cv-os-rhel-7Server, release_version: 6.10, organization: "{{ orgs }}", lifecycle_environment: Production, subscriptions: "{{ OS_subscriptions }}" }
+#- { name: ak-pro-os-rhel-69, content_view: cv-os-rhel-7Server, release_version: 6.9, organization: "{{ orgs }}", lifecycle_environment: Production, subscriptions: "{{ OS_subscriptions }}" }
+#### rhel5
+#- { name: ak-pro-os-rhel-5server, content_view: cv-os-rhel-5Server, release_version: 5Server, organization: "{{ orgs }}", lifecycle_environment: Production, subscriptions: "{{ OS_subscriptions }}" }
+
+#### APPS
+- { name: ak-dev-app-jboss-jws-rh7, content_view: ccv-app-jboss-jws-rh7, release_version: 7Server, organization: "{{ orgs }}", lifecycle_environment: Development, subscriptions: "{{ jws_subscriptions }}" }
+- { name: ak-uat-app-jboss-jws-rh7, content_view: ccv-app-jboss-jws-rh7, release_version: 7Server, organization: "{{ orgs }}", lifecycle_environment: UAT, subscriptions: "{{ jws_subscriptions }}" }
+- { name: ak-int-app-jboss-jws-rh7, content_view: ccv-app-jboss-jws-rh7, release_version: 7Server, organization: "{{ orgs }}", lifecycle_environment: Integration, subscriptions: "{{ jws_subscriptions }}" }
+- { name: ak-pre-app-jboss-jws-rh7, content_view: ccv-app-jboss-jws-rh7, release_version: 7Server, organization: "{{ orgs }}", lifecycle_environment: Preproduction, subscriptions: "{{ jws_subscriptions }}" }
+- { name: ak-pro-app-jboss-jws-rh7, content_view: ccv-app-jboss-jws-rh7, release_version: 7Server, organization: "{{ orgs }}", lifecycle_environment: Production, subscriptions: "{{ jws_subscriptions }}" }
+
+#### INFRA
+- { name: ak-infratest-sat6-capsule-rh7, content_view: ccv-infra-sat6-capsule-rh7, release_version: 7Server, organization: "{{ orgs }}", lifecycle_environment: InfraTest, subscriptions: "{{ sat_subscriptions }}" }
+- { name: ak-infraprod-sat6-capsule-rh7, content_view: ccv-infra-sat6-capsule-rh7, release_version: 7Server, organization: "{{ orgs }}", lifecycle_environment: InfraProd, subscriptions: "{{ sat_subscriptions }}" }

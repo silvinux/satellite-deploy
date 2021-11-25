@@ -1,0 +1,9 @@
+configure_katello_content_view_versions:
+##Publish and promote from one env to another
+# APPs
+  - content_view: ccv-app-jboss-jws-rh7
+    organization: "{{ orgs }}"
+    current_lifecycle_environment: Development
+    lifecycle_environments:
+      - UAT
+    state: present
