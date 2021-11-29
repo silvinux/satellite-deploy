@@ -1,3 +1,4 @@
 ---
 collections:
- - theforeman.foreman
+# - theforeman.foreman
+  - redhat.satellite
