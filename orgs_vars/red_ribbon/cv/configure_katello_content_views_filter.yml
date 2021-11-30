@@ -1,0 +1,7 @@
+---
+configure_katello_content_view_filters:
+  - name: "cv-os-rhel-7Server"
+    content_view: "FilterTest"
+    filter_type: "erratum"
+    end_date: "2021-11-11"
+    organization: "{{ orgs }}"    

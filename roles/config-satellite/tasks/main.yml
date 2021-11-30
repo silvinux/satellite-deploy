@@ -70,6 +70,13 @@
       tags: content_views
   tags: content_views
 
+- name: Manage content views filters
+  include_tasks: content_views_filter.yml
+  args:
+    apply:
+      tags: content_views_filter
+  tags: content_views_filter
+
 - name: Publish and promote content views
   include_tasks: cv_versions.yml
   args:
